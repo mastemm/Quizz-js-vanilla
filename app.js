@@ -21,6 +21,7 @@ form.addEventListener('submit', (e) => {
   }
   // console.log(tableauResults);
   verifFunc(tableauResults);
+
   tableauResults = [];
 });
 
@@ -34,6 +35,8 @@ function verifFunc(tabResultats) {
   }
   // console.log(verifTableau);
   afficherResultats(verifTableau);
+
+  couleurFonction(verifTableau);
   verifTableau = [];
 }
 function afficherResultats(tabCheck) {
@@ -81,3 +84,24 @@ function afficherResultats(tabCheck) {
       'Wops, cas innatendu.';
   }
 }
+
+function couleurFonction(tabValBool) {
+  for (let j = 0; j < tabValBool.length; j++) {
+    if (tabValBool[j] === true) {
+      toutesLesQuestions[j].style.background = 'lightgreen';
+    } else {
+      toutesLesQuestions[j].style.background = '#ffb8b8';
+      toutesLesQuestions[j].classList.add('echec');
+
+      setTimeout(() => {
+        toutesLesQuestions[j].classList.remove('echec');
+      }, 500);
+    }
+  }
+}
+
+toutesLesQuestions.forEach((item) => {
+  item.addEventListener('click', () => {
+    item.style.background = 'white';
+  });
+});
